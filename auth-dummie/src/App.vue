@@ -9,6 +9,8 @@
             </v-toolbar-title>
           </v-toolbar>
           <v-card-text>
+            <v-text-field label="Email" v-model="formulario.email"></v-text-field>
+            <v-text-field label="Password" type="Password" v-model="formulario.password"></v-text-field>            
           </v-card-text>
           <v-card-text>
             <v-layout justify-end>
@@ -22,21 +24,22 @@
 </template>
 
 <script>
-import { auth_dummie } from './script/auth-firebase.js'
+  import { auth_dummie } from './script/auth-firebase.js'
 
-export default {
-  name: 'App',
-  data () {
-    return {
-      formulario: {
-        email: '',
-        password: ''
+  export default {
+    name: 'App',
+    data () {
+      return {
+        formulario: {
+          email: '',
+          password: ''
+        }
+      }
+    },
+    methods : {
+      async ingresar() {
+        auth_dummie(this.formulario.email, this.formulario.password)
       }
     }
-  },
-  methods : {
-    async ingresar() {
-    }
   }
-}
 </script>
